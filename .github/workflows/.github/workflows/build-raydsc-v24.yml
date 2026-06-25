@@ -1,4 +1,4 @@
-name: Build RAYDSC APK
+name: Build RAYDSC V24 APK
 
 on:
   workflow_dispatch:
@@ -22,9 +22,9 @@ jobs:
         with:
           gradle-version: "9.4.1"
 
-      - name: Unzip RAYDSC project
+      - name: Unzip RAYDSC V24 project
         run: |
-          unzip RAYDSC_v22_source.zip -d extracted
+          unzip RAYDSC_v24_white_keys_skyblue_display_source.zip -d extracted
           find extracted -maxdepth 5 -type f | sort
 
       - name: Build APK
@@ -37,5 +37,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: raydsc-debug-apk
+          name: raydsc-v24-debug-apk
           path: extracted/**/app/build/outputs/apk/debug/*.apk
